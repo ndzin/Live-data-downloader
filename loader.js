@@ -16,7 +16,7 @@ const helpers = require("./helpers");
 const mainUrl = "https://autopatchhk.yuanshen.com"
 
 // You can change versions to some another list, like "./versions.beta" if you have beta list 👀
-const versions = require('./versions.release')
+const versions = require('./versions.beta')
 
 const paths =
     {
@@ -54,7 +54,6 @@ const resolvers =
         AudioAssets: ['pck'],
         VideoAssets: ['cuepoint', 'usm'],
         AssetBundles: ['blk'],
-        // other have a root / folder
     };
 
 if (mainUrl.indexOf('*') > -1) {
@@ -87,8 +86,6 @@ if (mainUrl.indexOf('*') > -1) {
 
                             const mapperData = helpers.getMd5Data(line)
 
-                            // Fix 404:
-                            // ${mainUrl}/client_game_res/2.7_live/output_6855943_1490a59df9/client/StandaloneWindows64/svc_catalog
                             if (mapperData.remoteName === 'svc_catalog') continue
 
                             const ext = mapperData.remoteName.split('.').pop()
