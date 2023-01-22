@@ -22,7 +22,7 @@ const paths =
     {
         res: {
             Mode: 'client_game_res',
-            Clients: ['client/Android', 'client/StandaloneWindows64', 'client/iOS', 'client/PS5', 'client/PS4'],
+            Clients: ['client/StandaloneWindows64'],
             Mappers: [
                 'res_versions_external',
                 'res_versions_medium',
@@ -69,31 +69,6 @@ if (mainUrl.indexOf('*') > -1) {
                 const pathData = paths[liveType]
                 for (const client of pathData.Clients)
                     for (const mapper of pathData.Mappers) {
-                        /*
-                        Examples for the mappers:
-
-                        ${mainUrl}/client_design_data/3.1_live/output_10941477_af48dac880/client/General/AssetBundles/data_versions
-                        ${mainUrl}/client_design_data/3.1_live/output_10805493_3222597d09/client_silence/General/AssetBundles/data_versions
-                        ${mainUrl}/client_game_res/3.1_live/output_10916590_847ba6bd45/client/Android/res_versions_external
-                        ${mainUrl}/client_game_res/3.1_live/output_10916590_847ba6bd45/client/Android/res_versions_medium
-                        ${mainUrl}/client_game_res/3.1_live/output_10916590_847ba6bd45/client/Android/res_versions_streaming
-                        ${mainUrl}/client_game_res/3.1_live/output_10916590_847ba6bd45/client/Android/release_res_versions_external
-                        ${mainUrl}/client_game_res/3.1_live/output_10916590_847ba6bd45/client/Android/release_res_versions_medium
-                        ${mainUrl}/client_game_res/3.1_live/output_10916590_847ba6bd45/client/Android/release_res_versions_streaming
-                        ${mainUrl}/client_game_res/3.1_live/output_10916590_847ba6bd45/client/Android/base_revision
-
-                        Examples for the files from mappers:
-
-                        ${mainUrl}/client_design_data/2.7_live/output_6801534_69e473b331/client/General/AssetBundles/blocks/00/24230448.blk
-                        ${mainUrl}/client_design_data/2.7_live/output_6801534_69e473b331/client_silence/General/AssetBundles/blocks/00/22551915.blk
-                        [attention: first blk from the "client/General/AssetBundles/data_versions", second blk from the "client_silence/General/AssetBundles/data_versions"]
-                        ${mainUrl}/client_game_res/2.7_live/output_6855943_1490a59df9/client/Android/ctable.dat
-                        ${mainUrl}/client_game_res/2.7_live/output_6855943_1490a59df9/client/Android/hardware_model_config.json
-                        ${mainUrl}/client_game_res/2.7_live/output_6855943_1490a59df9/client/Android/VideoAssets/Android/Cs_Inazuma_AQ202004_ResistanceCharge_Girl.usm
-                        ${mainUrl}/client_game_res/2.7_live/output_6855943_1490a59df9/client/Android/AudioAssets/Streamed9.pck
-                        ${mainUrl}/client_game_res/2.7_live/output_6855943_1490a59df9/client/Android/VideoAssets/MDAQ001_OPNew_Part1.cuepoint
-                         */
-
                         const fileFolder = `${pathData.Mode}/${version}/output_${liveData.Version}_${liveData.Suffix}/${client}`
                         const mapperUrl = `${mainUrl}/${fileFolder}/${mapper}`
 
@@ -128,17 +103,6 @@ if (mainUrl.indexOf('*') > -1) {
                             if (!extFolder)
                                 console.log(`Can't detect extFolder for ext: ${ext}, remoteName: ${mapperData.remoteName}, it's OK but check it yourself. In the current case saving to the root folder instead of extFolder`)
 
-                            /*
-                            Remove extFolder Because general mappers already have it in URL
-
-                            General mappers:
-                            ${mainUrl}/client_design_data/3.1_live/output_10941477_af48dac880/client/General/AssetBundles/data_versions,
-                            ${mainUrl}/client_design_data/3.1_live/output_10805493_3222597d09/client_silence/General/AssetBundles/data_versions,
-
-                            Files from general mappers:
-                            ${mainUrl}/client_design_data/2.7_live/output_6801534_69e473b331/client/General/AssetBundles/blocks/00/24230448.blk
-                            ${mainUrl}/client_design_data/2.7_live/output_6801534_69e473b331/client_silence/General/AssetBundles/blocks/00/22551915.blk
-                             */
                             if (extFolder && saveFileFolder.indexOf(extFolder) > -1)
                                 extFolder = ''
 

@@ -245,6 +245,19 @@ const list =
                 client: {Version: 12117976, Suffix: "9ddf06370b"},
             },
         ],
+
+        '3.5_live': [
+            {
+                res: {Version: 12691481, Suffix: "708ada59fe"},
+                clientSilence: {Version: 12703454, Suffix: "549092efa4"},
+                client: {Version: 12703454, Suffix: "549092efa4"},
+            },
+            {
+                res: {Version: 12691481, Suffix: "708ada59fe"},
+                clientSilence: {Version: 12790106, Suffix: "5456e74bdb"},
+                client: {Version: 12738877, Suffix: "489524e7ca"},
+            },
+        ],
     }
 
 module.exports = {list}
