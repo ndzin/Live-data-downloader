@@ -4,7 +4,7 @@ let path = require('path');
 
 http.createServer(function (request, response) {
     console.log('request starting...', request.url);
-    // or '.'
+
     const root = `${__dirname}/downloads`;
     let filePath = root + request.url;
     if (filePath === `${root}/`)
@@ -12,10 +12,7 @@ http.createServer(function (request, response) {
 
     let extname = path.extname(filePath);
 
-    // for blob data
     let contentType = 'application/octet-stream';
-    // for text data
-    // let contentType = 'text/html';
 
     switch (extname) {
         case '.js':
